@@ -72,9 +72,12 @@ function Contact() {
       const res = await fetch("https://formspree.io/f/mrewdlyq", {
         method: "POST",
         body: fd,
+        headers: { Accept: "application/json" },
       });
 
       if (!res.ok) {
+        const json = (await res.json().catch(() => null)) as { errors?: Array<{ message?: string }> } | null;
+        console.error("[contact] formspree error:", json);
         throw new Error("submission_failed");
       }
 
