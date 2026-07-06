@@ -69,7 +69,7 @@ function Contact() {
 
     setSubmitting(true);
     try {
-      const res = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
+      const res = await fetch("https://formspree.io/f/mrewdlyq", {
         method: "POST",
         body: fd,
       });
@@ -262,15 +262,26 @@ function Contact() {
 
               <button
                 type="submit"
-                disabled={true}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-gray-400 px-6 py-3 text-sm font-semibold text-white shadow-glow transition-transform cursor-not-allowed opacity-70"
+                disabled={submitting}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-gradient-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-70"
               >
-                <Mail className="h-4 w-4" />
-                {t("Email setup coming soon", "E-posta kurulumu yakında")}
+                {submitting ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    {t("Sending…", "Gönderiliyor…")}
+                  </>
+                ) : submitted ? (
+                  <>
+                    <CheckCircle2 className="h-4 w-4" />
+                    {t("Sent", "Gönderildi")}
+                  </>
+                ) : (
+                  <>
+                    <Send className="h-4 w-4" />
+                    {t("Send to our engineers", "Mühendislerimize gönder")}
+                  </>
+                )}
               </button>
-              <p className="text-center text-xs text-muted-foreground">
-                {t("For now, reach us at info@eps-con.com", "Şimdilik info@eps-con.com adresinden bize ulaşın")}
-              </p>
             </form>
           </div>
         </div>
