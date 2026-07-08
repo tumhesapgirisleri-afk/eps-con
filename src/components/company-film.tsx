@@ -3,7 +3,7 @@ import { Play, ExternalLink } from "lucide-react";
 import { useT } from "@/i18n/language";
 import { SectionHeading } from "@/components/ui-kit";
 
-const YOUTUBE_ID = "KuDReTIPyuI";
+const YOUTUBE_ID = "4rkxLik-E9I";
 const WATCH_URL = `https://youtu.be/${YOUTUBE_ID}`;
 
 export function CompanyFilm() {
