@@ -65,6 +65,7 @@ function Contact() {
     const form = e.currentTarget;
     const fd = new FormData(form);
     fd.set("lang", lang);
+    fd.set("_cc", "info@eps-con.com");
     if (file) fd.set("file", file);
 
     setSubmitting(true);
