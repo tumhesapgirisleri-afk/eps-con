@@ -33,18 +33,18 @@ export const Route = createFileRoute("/api/public/upload")({
         const path = `contact-attachments/${new Date().toISOString().slice(0, 10)}/${crypto.randomUUID()}-${safeName}`;
 
         try {
-          const blob = await put(path, file, {
-            access: "public",
+          await put(path, file, {
+            access: "private",
             contentType: file.type || "application/octet-stream",
           });
+          const downloadUrl = `${new URL(request.url).origin}/api/public/download?pathname=${encodeURIComponent(path)}`;
           return new Response(
-            JSON.stringify({ ok: true, url: blob.url, name: file.name.slice(0, 200) }),
+            JSON.stringify({ ok: true, url: downloadUrl, name: file.name.slice(0, 200) }),
             { status: 200, headers: { "content-type": "application/json" } },
           );
         } catch (err) {
           console.error("[upload] blob upload failed:", err);
-          const debug = err instanceof Error ? err.message : String(err);
-          return jsonError(`We couldn't upload your file. Please try again. [DEBUG: ${debug}]`, 500);
+          return jsonError("We couldn't upload your file. Please try again.", 500);
         }
       },
     },
