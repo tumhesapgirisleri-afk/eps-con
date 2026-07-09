@@ -1,0 +1,39 @@
+<svg viewBox="20 20 200 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="EPS">
+  <defs>
+    <linearGradient id="eps-beam-silver" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f4f7fa" />
+      <stop offset="55%" stop-color="#c9d0d8" />
+      <stop offset="100%" stop-color="#8b939d" />
+    </linearGradient>
+    <linearGradient id="eps-beam-blue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5d7fc0" />
+      <stop offset="100%" stop-color="#3f5da3" />
+    </linearGradient>
+    <radialGradient id="eps-bead" cx="42%" cy="34%" r="72%">
+      <stop offset="0%" stop-color="#5a626c" />
+      <stop offset="55%" stop-color="#2b3038" />
+      <stop offset="100%" stop-color="#05070a" />
+    </radialGradient>
+    <radialGradient id="eps-star-core" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="55%" stop-color="#eaf2ff" />
+      <stop offset="100%" stop-color="#9fbdf2" />
+    </radialGradient>
+  </defs>
+
+  <path d="M56.1 164.7 A78 78 0 0 1 95.9 45.8" fill="none" stroke="#4666ad" stroke-width="15" stroke-linecap="round" />
+  <path d="M183.9 164.7 A78 78 0 0 0 144.1 45.8" fill="none" stroke="#4666ad" stroke-width="15" stroke-linecap="round" />
+
+  <polygon points="106,100 116,100 96,222 66,222" fill="url(#eps-beam-silver)" />
+  <polygon points="124,100 134,100 174,222 144,222" fill="url(#eps-beam-silver)" />
+  <polygon points="114,100 126,100 136,222 104,222" fill="url(#eps-beam-blue)" />
+
+  <circle cx="120" cy="78" r="25" fill="url(#eps-bead)" />
+  <circle cx="120" cy="78" r="20" fill="url(#eps-star-core)" opacity="0.6" />
+  <path
+    d="M120 54 L124.5 73.5 L144 78 L124.5 82.5 L120 102 L115.5 82.5 L96 78 L115.5 73.5 Z"
+    fill="url(#eps-star-core)"
+    stroke="#ffffff"
+    stroke-width="0.5"
+  />
+</svg>

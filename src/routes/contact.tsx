@@ -66,7 +66,7 @@ function Contact() {
     const fd = new FormData(form);
     fd.delete("file"); // Formspree's free plan rejects file uploads — handled separately via Blob storage
     fd.set("lang", lang);
-    fd.set("_cc", "serdar@vayes.com.tr");
+    fd.set("_cc", "info@eps-con.com");
 
     setSubmitting(true);
     try {
