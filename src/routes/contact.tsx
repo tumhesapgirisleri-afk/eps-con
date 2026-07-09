@@ -64,12 +64,26 @@ function Contact() {
 
     const form = e.currentTarget;
     const fd = new FormData(form);
+    fd.delete("file"); // Formspree's free plan rejects file uploads — handled separately via Blob storage
     fd.set("lang", lang);
-    fd.set("_cc", "info@eps-con.com");
-    if (file) fd.set("file", file);
+    fd.set("_cc", "serdar@vayes.com.tr");
 
     setSubmitting(true);
     try {
+      if (file) {
+        const uploadFd = new FormData();
+        uploadFd.set("file", file);
+        const uploadRes = await fetch("/api/public/upload", { method: "POST", body: uploadFd });
+        const uploadJson = (await uploadRes.json().catch(() => null)) as
+          | { ok?: boolean; url?: string; name?: string }
+          | null;
+        if (!uploadRes.ok || !uploadJson?.ok || !uploadJson.url) {
+          throw new Error("attachment_upload_failed");
+        }
+        const message = String(fd.get("message") ?? "");
+        fd.set("message", `${message}\n\nAttachment (${uploadJson.name}): ${uploadJson.url}`);
+      }
+
       const res = await fetch("https://formspree.io/f/mrewdlyq", {
         method: "POST",
         body: fd,
