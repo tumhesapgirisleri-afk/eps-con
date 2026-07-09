@@ -43,7 +43,8 @@ export const Route = createFileRoute("/api/public/upload")({
           );
         } catch (err) {
           console.error("[upload] blob upload failed:", err);
-          return jsonError("We couldn't upload your file. Please try again.", 500);
+          const debug = err instanceof Error ? err.message : String(err);
+          return jsonError(`We couldn't upload your file. Please try again. [DEBUG: ${debug}]`, 500);
         }
       },
     },
