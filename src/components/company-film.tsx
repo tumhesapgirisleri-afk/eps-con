@@ -21,23 +21,13 @@ export function CompanyFilm() {
 
         <div className="group relative mt-12 aspect-video overflow-hidden rounded-2xl border border-border bg-black shadow-card ring-1 ring-primary/10">
           {playing ? (
-            <>
-              <iframe
-                src={`https://www.youtube-nocookie.com/embed/${YOUTUBE_ID}?autoplay=1&rel=0`}
-                title={t("EPS company film", "EPS tanıtım filmi")}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="h-full w-full"
-              />
-              {/* Masks the YouTube title/channel overlay (top-left) without blocking the native controls next to it. */}
-              <div
-                className="pointer-events-none absolute inset-x-0 top-0 h-[26%] w-[62%]"
-                style={{
-                  background:
-                    "linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.9) 65%, rgba(0,0,0,0) 100%)",
-                }}
-              />
-            </>
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${YOUTUBE_ID}?autoplay=1&rel=0`}
+              title={t("EPS company film", "EPS tanıtım filmi")}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="h-full w-full"
+            />
           ) : (
             <button
               type="button"
